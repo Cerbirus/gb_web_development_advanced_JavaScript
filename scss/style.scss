@@ -1,0 +1,759 @@
+$border-width: 0px;
+$border-width2: 0px;
+$border-color: #6df174;
+$border-color2: #f16de6;
+$border: $border-width solid $border-color;
+$border2: $border-width2 solid $border-color2;
+
+/* Предопределенные стили сайта */
+$opacity: 0.7; /* Затемнение блоков категорий */
+$brend_color: #f16d7f;
+$brend_color2: #6f6e6e;
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Lato;
+  font-style: normal;
+}
+
+/* === Начало: ===  Обнуление ненужных стиле bootstap ===  */
+dl,
+ol,
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ol,
+ul {
+  padding-left: 0;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+/* === Конец: ===  Обнуление ненужных стиле bootstap ===  */
+
+.basic {
+  @at-root {
+
+    .body {
+      background: #e5e5e5;
+    }
+
+    .container {
+      border: $border;
+
+      max-width: 1140px;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    .disp_block {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .color_brand_2 {
+      color: $brend_color;
+    }
+
+    .color_txt_property {
+      color: $brend_color2;
+    }
+
+    .background-color_brand_2 {
+      background-color: $brend_color;
+    }
+
+    .txt {
+      &-bold {
+        font-weight: 700;
+      }
+    }
+
+    .visibility-hidden {
+      display: block;
+      visibility: hidden;
+      height: 0px;
+      width: 0px;
+      margin: auto;
+      /* padding: auto; */
+    }
+
+    .txt-uppercase {
+      text-transform: uppercase;
+    }
+
+    .df-row {
+      display: flex;
+      flex-direction: row;
+    }
+    .df-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .df-row-sb {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .df-col-sb {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .df-jc-sb {
+      justify-content: space-between;
+    }
+    .df-jc-c {
+      justify-content: center;
+    }
+    .df-jc-sa {
+      justify-content: space-around;
+    }
+  }
+}
+
+/* === Начало: === main === */
+.products {
+  margin-top: 51px;
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+
+  &-listing {
+    list-style-type: none;
+    /* display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+
+  &-item {
+    border: $border;
+
+    /* width: calc(100% / 3 - 42px - -42px / 3 - 0.01px); */
+    margin: 10px;
+    background-color: #f8f8f8;
+    position: relative;
+
+    /* При наведении на блок продукта */
+    &:hover {
+      & .products-item-cart-btn {
+        display: flex;
+        &:hover {
+          background-color: $brend_color;
+          color: #fff;
+          border: 1px solid $brend_color;
+
+          & svg {
+            fill: #fff;
+          }
+        }
+        &:active {
+          background-color: transparent;
+          color: #fff;
+          border: 1px solid #fff;
+
+          & svg {
+            fill: #fff;
+          }
+        }
+      }
+
+      .products-item-img-container {
+        filter: brightness(50%);
+      }
+    }
+
+    &-header {
+      margin: 0 0 48px 0;
+      width: 100%;
+      background-color: rgba(248, 248, 248, 0);
+      text-align: center;
+
+      &-title {
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 36px;
+        color: #222222;
+      }
+
+      &-txt {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: #9f9f9f;
+      }
+    }
+
+    &-img {
+      width: 100%;
+    }
+
+    &-details {
+      box-sizing: border-box;
+      text-align: left;
+      margin: 25px 28px 20px 18px;
+
+      &-header,
+      & h3 {
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 16px;
+        color: #000000;
+      }
+
+      &-title,
+      & p {
+        margin: 12.65px 0 0;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 17px;
+        color: #5d5d5d;
+      }
+
+      &-price,
+      & a {
+        margin: 18px 0 0;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+
+    &-link {
+      display: block;
+      text-decoration: none;
+    }
+
+    &-cart-btn {
+      max-width: 160px;
+      width: 100%;
+      padding: 10px;
+
+      display: none;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+
+      border: 1px solid #ffffff;
+      background: transparent;
+
+      text-align: center;
+      font-size: 14px;
+      line-height: 17px;
+      color: #ffffff;
+      position: absolute;
+      top: 30%;
+      left: calc(50% - 80px);
+
+      & svg {
+        fill: #fff;
+        margin: 0 11px 0 0;
+      }
+    }
+
+    &-button {
+      max-width: 212px;
+      width: 100%;
+      margin: 0 auto 0 auto;
+
+      display: block;
+      box-sizing: border-box;
+      background-color: #fff;
+
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      padding: 15px 35px;
+      border: 1px solid #ff6a6a;
+
+      text-align: center;
+      word-break: break-all;
+
+      &:hover {
+        background-color: #ff6a6a;
+        color: #fff;
+      }
+      &:active {
+        background-color: #fff;
+        border: 1px solid #ff6a6a;
+        color: #ff6a6a;
+      }
+    }
+  }
+
+  &-header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 0 64px 0;
+
+    &-title {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 36px;
+    }
+
+    &-txt {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: #9f9f9f;
+    }
+
+    &-sorting {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: #6f6e6e;
+
+      &-listing {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        color: $brend_color2;
+      }
+
+      &-item {
+        display: block;
+        margin-right: 35px;
+
+        &-btn {
+          display: none; /* скрыть сам checkbox */
+
+          &:checked ~ ul {
+            visibility: visible;
+            opacity: 1;
+            z-index: 1;
+            transform: translateY(0%);
+            transition-delay: 0s, 0s, 0.3s;
+          }
+
+          &:checked ~ label i::before {
+            transform: rotate(-40deg);
+            background-color: $brend_color;
+          }
+          &:checked ~ label i:after {
+            transform: rotate(40deg);
+            background-color: $brend_color;
+          }
+        }
+
+        &-check {
+          &:after {
+            content: "";
+            display: block;
+
+            height: 1.5px;
+            width: 8px;
+            position: absolute;
+
+            margin-left: 5px;
+            background-color: $brend_color2;
+            border-radius: 2px;
+            transform: rotate(-40deg);
+            transition: all 0.2s ease-in;
+          }
+
+          &:before {
+            content: "";
+            display: block;
+
+            height: 1.5px;
+            width: 8px;
+            position: absolute;
+
+            background-color: $brend_color2;
+            border-radius: 2px;
+            transform: rotate(40deg);
+            transition: all 0.2s ease-in;
+          }
+        }
+
+        &-label {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-transform: uppercase;
+
+          cursor: pointer;
+
+          & span {
+            margin-right: 10px;
+            display: flex;
+            z-index: 20;
+            background-color: #fff;
+          }
+        }
+
+        &-list {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          min-width: 100px;
+          min-height: 100px;
+          padding: 7px 9px 11px 9px;
+          box-sizing: border-box;
+          list-style: none;
+          position: absolute;
+
+          background: #fff;
+          color: $brend_color2;
+          box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+
+          /* Раскрытие списка */
+          z-index: 1;
+          transform: translateY(-1.25em);
+          visibility: hidden;
+          opacity: 0;
+          transition: all 0.5s ease-in-out 0s, visibility 0s linear 0.5s, z-index 0s linear 0.01s;
+        }
+
+        &-trending {
+          &-item {
+            padding: 6px;
+            display: flex;
+
+            &:hover {
+              background: $brend_color;
+              color: #fff;
+            }
+            &:active {
+              background: #fff;
+              color: $brend_color2;
+            }
+
+            &-input {
+            }
+            &-label {
+              margin-left: 9px;
+              text-transform: uppercase;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 16px;
+              color: $brend_color2;
+            }
+          }
+        }
+
+        &-size {
+          &-item {
+            padding: 6px;
+            display: flex;
+
+            &:hover {
+              background: $brend_color;
+              color: #fff;
+            }
+            &:active {
+              background: #fff;
+              color: $brend_color2;
+            }
+
+            &-input {
+            }
+            &-label {
+              margin-left: 9px;
+              text-transform: uppercase;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 16px;
+              color: $brend_color2;
+            }
+          }
+        }
+
+        &-price {
+          &-item {
+            padding: 6px;
+            display: flex;
+
+            &:hover {
+              background: $brend_color;
+              color: #fff;
+            }
+            &:active {
+              background: #fff;
+              color: $brend_color2;
+            }
+
+            &-input {
+            }
+            &-label {
+              margin-left: 9px;
+              text-transform: uppercase;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 16px;
+              color: $brend_color2;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* === Конец: === main === */
+
+@media (max-width: 768px) {
+
+  .container {
+    max-width: 736px;
+  }
+
+  .products-listing {
+    margin-bottom: 16px;
+  }
+
+  .products {
+    &-header {
+      &-inlineflex {
+        justify-content: end;
+      }
+
+      &-sorting {
+        &-item {
+          &-price {
+            position: fixed;
+            right: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .products-item {
+    width: calc(100% / 2 - 32px - -16px / 2 - 0.01px);
+    margin: 0 16px 16px 0;
+  }
+
+  .products-item-header {
+    width: 100%;
+    margin: 0 0 30px 0;
+  }
+
+  .product-description-content-price {
+    width: 80%;
+  }
+
+  .products-cart {
+    flex-direction: column;
+    max-width: 100%;
+
+    & .checkout {
+      max-width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      & .checkout-adress-header {
+        max-width: 100%;
+        width: 100%;
+      }
+      & .checkout-adress {
+        width: 48%;
+        margin-bottom: 28px;
+      }
+      & .checkout-confirm {
+        width: 48%;
+        margin-left: 15px;
+        max-height: 214px;
+        height: 100%;
+      }
+    }
+
+    &-left {
+      max-width: 100%;
+      margin-bottom: 64px;
+    }
+
+    &-right {
+      max-width: 100%;
+    }
+
+    &-btns {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+
+}
+
+@media (max-width: 440px) {
+  .display-none-440 {
+    display: none;
+  }
+
+  .container {
+    max-width: 408px;
+  }
+
+  .products {
+    margin-top: 24px;
+
+    &-header {
+      margin: 0 0 40px 0;
+    }
+
+    &-header-sorting {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    &-listing {
+      /* margin: 0 -8px 10px -8px; */
+      padding: 0 8px 10px 8px;
+    }
+
+    &-item {
+      width: 100%;
+      margin: 0 0 30px 0;
+    }
+  }
+
+  .product-description-content-sorting {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .product-description-content-price {
+    width: 50%;
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+
+  .products-cart {
+    & .checkout {
+      flex-direction: row;
+
+      & .checkout-adress-header {
+        max-width: 100%;
+        width: 100%;
+      }
+      & .checkout-adress {
+        width: 100%;
+        margin-bottom: 28px;
+      }
+      & .checkout-confirm {
+        width: 100%;
+        margin-left: 0px;
+        max-height: 214px;
+        height: 100%;
+      }
+    }
+
+    &-left {
+      margin-bottom: 48px;
+    }
+
+    &-right {
+    }
+
+    &-btns {
+      justify-content: space-between;
+    }
+
+    &-item {
+      height: 180px;
+      margin-bottom: 32px;
+
+      &-details {
+        margin: 13px 10px 0 17px;
+      }
+
+      &-header {
+        padding-bottom: 26px;
+
+        font-size: 16px;
+        line-height: 19px;
+      }
+
+      & .property {
+        font-size: 14px;
+        line-height: 17px;
+
+        & span {
+          margin-bottom: 4px;
+        }
+
+        & .quantity input {
+          max-width: 15px;
+          margin-left: 15px;
+          font-size: 10px;
+          line-height: 12px;
+        }
+      }
+    }
+  }
+
+}
+
+.menu-cart-form {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  flex-wrap: wrap;
+  max-width: 500px;
+  width: 100%;
+  padding: 10px;
+
+  background-color: beige;
+  box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+
+  z-index: 30;
+  right: 0;
+  top: 60px;
+
+  &-header {
+    display: grid;
+    grid-template-columns: 50% 20% 15% 15%;
+
+    border-bottom: 1px solid black;
+  }
+
+  &-body {
+    display: grid;
+  }
+
+  &-footer {
+    display: grid;
+    grid-template-columns: 85% 15%;
+    margin-top: 5px;
+
+    & span:first-child {
+      text-align: right;
+      margin-right: 5px;
+    }
+  }
+
+  &-product {
+    display: grid;
+    grid-template-columns: 50% 20% 15% 15%;
+    align-items: center;
+    border-bottom: 1px dotted black;
+  }
+}
