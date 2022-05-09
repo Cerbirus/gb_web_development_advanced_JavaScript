@@ -112,4 +112,4 @@ class CartItem {
 }
 
 let list = new ProductList('.products-listing');
-console.log(list.getSumm());
+console.log(list.getSumm()); //
