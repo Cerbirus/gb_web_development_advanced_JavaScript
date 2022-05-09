@@ -1,44 +1,76 @@
-const products = [
-    {
-        id: 1, title: 'Notebook', price: 2000, img: "img/Notebook.jpg",
-        description: "Notebook"
-    },
-    {
-        id: 2, title: 'Mouse', price: 20, img: "img/Mouse.jpg",
-        description: "Mouse"
-    },
-    {
-        id: 3, title: 'Keyboard', price: 200, img: "img/Keyboard.jpg",
-        description: "Keyboard"
-    },
-    {
-        id: 4, title: 'Gamepad', price: 50, img: "img/Gamepad.jpg",
-        description: "Gamepad"
-    },
-];
+class ProductList {
+    constructor(container = '.products') {
+        this.container = container;
+        this.goods = [];
+        this._fetchProducts();//рекомендация, чтобы метод был вызван в текущем классе
+        this.render();//вывод товаров на страницу
+    }
+    _fetchProducts() {
+        this.goods = [
+            {
+                id: 1, title: 'Notebook', price: 2000, img: "img/Notebook.jpg",
+                description: "Notebook"
+            },
+            {
+                id: 2, title: 'Mouse', price: 20, img: "img/Mouse.jpg",
+                description: "Mouse"
+            },
+            {
+                id: 3, title: 'Keyboard', price: 200, img: "img/Keyboard.jpg",
+                description: "Keyboard"
+            },
+            {
+                id: 4, title: 'Gamepad', price: 50, img: "img/Gamepad.jpg",
+                description: "Gamepad"
+            },
+        ];
+    }
 
-//Функция для формирования верстки каждого товара
-//Добавить в выводе изображение
-const renderProduct = (item) => {
-    return `<li class="products-item" 
-                        data-id="${item.id}"
-                        data-title="${item.title}" 
-                        data-price="${item.price}">
+    render() {
+        const block = document.querySelector(this.container);
+        for (let product of this.goods) {
+            const item = new ProductItem(product);
+            block.insertAdjacentHTML("beforeend", item.render());
+            //           block.innerHTML += item.render();
+        }
+    }
+
+    getSumm() {
+        // reduce используется для последовательной обработки каждого элемента 
+        // массива с сохранением промежуточного результата.
+        let result = this.goods.reduce((sum, item) => sum + item.price, 0);
+        return result;
+    }
+}
+
+class ProductItem {
+    constructor(product) {
+        this.title = product.title;
+        this.id = product.id;
+        this.price = product.price;
+        this.img = product.img;
+        this.description = product.description;
+    }
+    render() {
+        return `<li class="products-item" 
+                        data-id="${this.id}"
+                        data-title="${this.title}" 
+                        data-price="${this.price}">
                 <article class="products-item-article">
                     <div class="products-item-img-container">
                         <a href="" class="products-item-link">
-                            <img src="${item.img}" alt="${item.title}" class="products-item-img">
+                            <img src="${this.img}" alt="${this.title}" class="products-item-img">
                         </a>
                     </div>
                     <div class="products-item-details">
                         <a href="" class="products-item-link products-item-details-header">
-                            <h3>${item.title}</h3>
+                            <h3>${this.title}</h3>
                         </a>
                         <a href="" class="products-item-link products-item-details-title">
-                            <p class="text">${item.description}</p>
+                            <p class="text">${this.description}</p>
                         </a>
                         <a href="" class="products-item-link color_brand_2 products-item-details-price">
-                            $<span class="price">${item.price}</span>
+                            $<span class="price">${this.price}</span>
                         </a>
                     </div>
                     <button class="products-item-cart-btn">
@@ -50,17 +82,34 @@ const renderProduct = (item) => {
                     </button>
                 </article>
             </li>`
-};
+    }
+}
 
-const renderPage = list => {
-    const productsList = list.map(item => renderProduct(item));
-    console.log(productsList);
-    // Запятая добавляется из-за того, что выводятся элементы массива
-    // а разделителем элементов массив по умолчанию является ","
-    // поэтому необходимо самостоятельно объеденить элементы массива
-    // с указанием разделителя "пустая строка" - join('')
-    document.querySelector('.products-listing').innerHTML =
-        productsList.join('');
-};
+class Cart {
+    constructor(container = '.cart-list') {
+        this.container = container;
+    }
 
-renderPage(products);
+    addProduct(product) {
+    }
+
+    removeProduct(product) {
+    }
+
+    changeProduct(product) {
+    }
+
+    render() {
+    }
+}
+
+class CartItem {
+    constructor(product) {
+
+    }
+    render() {
+    }
+}
+
+let list = new ProductList('.products-listing');
+console.log(list.getSumm());
