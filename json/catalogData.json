@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "Notebook",
+        "price": 2000,
+        "img": "img/Notebook.jpg",
+        "description": "Notebook"
+    },
+    {
+        "id": 2,
+        "title": "Mouse",
+        "price": 20,
+        "img": "img/Mouse.jpg",
+        "description": "Mouse"
+    },
+    {
+        "id": 3,
+        "title": "Keyboard",
+        "price": 200,
+        "img": "img/Keyboard.jpg",
+        "description": "Keyboard"
+    },
+    {
+        "id": 4,
+        "title": "Gamepad",
+        "price": 50,
+        "img": "img/Gamepad.jpg",
+        "description": "Gamepad"
+    }
+]
