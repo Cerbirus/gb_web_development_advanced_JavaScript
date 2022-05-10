@@ -1,45 +1,59 @@
+const API = 'https://raw.githubusercontent.com/Cerbirus/gb_web_development_advanced_JavaScript/main';
+
 class ProductList {
     constructor(container = '.products') {
         this.container = container;
-        this.goods = [];
-        this._fetchProducts();//рекомендация, чтобы метод был вызван в текущем классе
-        this.render();//вывод товаров на страницу
+        this.products = []; // массив товаров из JSON документа
+        this.productsObject = new Map(); // соответствие созданных продуктов
+        this._getProducts()
+            .then(data => { //data - объект js
+                this.products = data;
+                this.render();
+            });
     }
-    _fetchProducts() {
-        this.goods = [
-            {
-                id: 1, title: 'Notebook', price: 2000, img: "img/Notebook.jpg",
-                description: "Notebook"
-            },
-            {
-                id: 2, title: 'Mouse', price: 20, img: "img/Mouse.jpg",
-                description: "Mouse"
-            },
-            {
-                id: 3, title: 'Keyboard', price: 200, img: "img/Keyboard.jpg",
-                description: "Keyboard"
-            },
-            {
-                id: 4, title: 'Gamepad', price: 50, img: "img/Gamepad.jpg",
-                description: "Gamepad"
-            },
-        ];
+
+    /*_fetchProducts() {
+            this.products = [
+                {
+                    id: 1, title: 'Notebook', price: 2000, img: "img/Notebook.jpg",
+                    description: "Notebook"
+                },
+                {
+                    id: 2, title: 'Mouse', price: 20, img: "img/Mouse.jpg",
+                    description: "Mouse"
+                },
+                {
+                    id: 3, title: 'Keyboard', price: 200, img: "img/Keyboard.jpg",
+                    description: "Keyboard"
+                },
+                {
+                    id: 4, title: 'Gamepad', price: 50, img: "img/Gamepad.jpg",
+                    description: "Gamepad"
+                },
+            ];
+        } */
+
+    _getProducts() {
+        return fetch(`${API}/json/catalogData.json`)
+            .then(result => result.json())
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     render() {
         const block = document.querySelector(this.container);
-        for (let product of this.goods) {
-            const item = new ProductItem(product);
-            block.insertAdjacentHTML("beforeend", item.render());
-            //           block.innerHTML += item.render();
+        for (let product of this.products) {
+            const productObject = new ProductItem(product);
+            block.insertAdjacentHTML("beforeend", productObject.render());
+            this.productsObject.set(product.id, productObject);
         }
     }
 
     getSumm() {
         // reduce используется для последовательной обработки каждого элемента 
         // массива с сохранением промежуточного результата.
-        let result = this.goods.reduce((sum, item) => sum + item.price, 0);
-        return result;
+        return this.products.reduce((sum, item) => sum + item.price, 0);
     }
 }
 
@@ -86,30 +100,155 @@ class ProductItem {
 }
 
 class Cart {
+
     constructor(container = '.cart-list') {
         this.container = container;
+        this.cartItems = []; // массив товаров из JSON документа
+        this.cartItemsObject = new Map(); // созданные продукты в корзине
+        this._getProducts()
+            .then(data => {
+                this.cartItems = data.contents;
+                this.amount = data.amount;
+                this.count = data.count;
+                this.render();
+            });
     }
 
-    addProduct(product) {
+    _getProducts() {
+        return fetch(`${API}/json/cartData.json`)
+            .then(result => result.json())
+            .catch(error => {
+                console.log(error);
+            });
     }
 
-    removeProduct(product) {
+    addToCart(product, amount = 1) {
+        let cartItemObject = null;
+
+        if (this.cartItemsObject.has(product.id)) {
+            cartItemObject = this.cartItemsObject.get(product.id);
+            cartItemObject.count++;
+            cartItemObject.amount =
+                +cartItemObject.product.price
+                * +cartItemObject.count
+        }
+        else {
+            const block = document.querySelector(this.container);
+            cartItemObject = new CartItem(product, amount);
+            block.insertAdjacentHTML("beforeend", cartItemObject.render());
+            cartItemObject.elem = cartBodyEl.querySelector(`#product_${product.id}`);
+            this.cartItemsObject.set(product.id, cartItemObject);
+        }
+
+        this.changeProduct(cartItemObject);
     }
 
-    changeProduct(product) {
+    removeToCart(product) {
+        const cartItemObject = this.cartItemsObject.get(product.id);
+
+        cartItemObject.count--;
+        cartItemObject.amount = +cartItemObject.product.price
+            * +cartItemObject.count;
+        this.changeProduct(cartItemObject);
+
+        if (cartItemObject.count <= 0) {
+            cartItemObject.elem.remove();
+            this.cartItemsObject.delete(product.id);
+        }
+    }
+
+    changeProduct(cartItem) {
+        cartItem.elem.querySelector(`.cart-count`).textContent = cartItem.count;
+        cartItem.elem.querySelector(`.cart-total`).textContent = cartItem.amount;
+        cartTotalEl.textContent = this.getSum();
+        cartCountEl.textContent = this.getCount();
+    }
+
+    getSum() {
+        let result = 0;
+        this.cartItemsObject.forEach((value) => result += value.amount);
+        return result;
+    }
+
+    getCount() {
+        let result = 0;
+        this.cartItemsObject.forEach((value) => result += value.count);
+        return result;
     }
 
     render() {
+        const block = document.querySelector(this.container);
+        for (let cartItem of this.cartItems) {
+            const product = productList.productsObject.get(cartItem.id_product);
+            const cartItemObject = new CartItem(product, cartItem.quantity);
+
+            block.insertAdjacentHTML("beforeend", cartItemObject.render());
+            cartItemObject.elem = cartBodyEl.querySelector(`#product_${product.id}`);
+
+            this.cartItemsObject.set(product.id, cartItemObject);
+        }
+        cartTotalEl.textContent = this.getSum();
+        cartCountEl.textContent = this.getCount();
     }
 }
 
 class CartItem {
-    constructor(product) {
-
+    constructor(product, count = 1) {
+        this.product = product;
+        this.count = +count;
+        this.amount = +product.price * +count;
     }
+
     render() {
+        return `<div id="product_${this.product.id}" 
+                        class="menu-cart-form-product"
+                        data-id="${this.product.id}">
+                    <div>${this.product.title}</div >
+                    <div class="cart-count">${this.count}</div>
+                    <div>${this.product.price}</div>
+                    <div class="cart-total">${this.amount}</div>
+                    <button class="menu-cart-form-close-btn">
+                        <svg width="13" height="13" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.4158 6.00409L11.7158 1.71409C11.9041 1.52579 12.0099 1.27039 12.0099 1.00409C12.0099 0.73779 11.9041 0.482395 11.7158 0.294092C11.5275 0.105788 11.2721 0 11.0058 0C10.7395 0 10.4841 0.105788 10.2958 0.294092L6.0058 4.59409L1.7158 0.294092C1.52749 0.105788 1.2721 -1.9841e-09 1.0058 0C0.739497 1.9841e-09 0.484102 0.105788 0.295798 0.294092C0.107495 0.482395 0.0017066 0.73779 0.0017066 1.00409C0.0017066 1.27039 0.107495 1.52579 0.295798 1.71409L4.5958 6.00409L0.295798 10.2941C0.20207 10.3871 0.127676 10.4977 0.0769072 10.6195C0.0261385 10.7414 0 10.8721 0 11.0041C0 11.1361 0.0261385 11.2668 0.0769072 11.3887C0.127676 11.5105 0.20207 11.6211 0.295798 11.7141C0.388761 11.8078 0.499362 11.8822 0.621222 11.933C0.743081 11.9838 0.873786 12.0099 1.0058 12.0099C1.13781 12.0099 1.26852 11.9838 1.39038 11.933C1.51223 11.8822 1.62284 11.8078 1.7158 11.7141L6.0058 7.41409L10.2958 11.7141C10.3888 11.8078 10.4994 11.8822 10.6212 11.933C10.7431 11.9838 10.8738 12.0099 11.0058 12.0099C11.1378 12.0099 11.2685 11.9838 11.3904 11.933C11.5122 11.8822 11.6228 11.8078 11.7158 11.7141C11.8095 11.6211 11.8839 11.5105 11.9347 11.3887C11.9855 11.2668 12.0116 11.1361 12.0116 11.0041C12.0116 10.8721 11.9855 10.7414 11.9347 10.6195C11.8839 10.4977 11.8095 10.3871 11.7158 10.2941L7.4158 6.00409Z"></path>
+                        </svg>
+                    </button>
+                </div>`;
     }
 }
 
-let list = new ProductList('.products-listing');
-console.log(list.getSumm()); //
+const productsEl = document.querySelector('.products-listing');
+const cartEl = document.querySelector('.menu-cart');
+const cartFormEl = document.querySelector('.menu-cart-form');
+const cartCountEl = document.querySelector('.menu-cart-txt');
+const cartBodyEl = document.querySelector('.menu-cart-form-body');
+const cartTotalEl = document.querySelector('.menu-cart-form-total');
+
+const productList = new ProductList('.products-listing');
+const cart = new Cart('.menu-cart-form-body');
+
+cartEl.addEventListener('click', () => {
+    cartFormEl.classList.toggle('visibility-hidden');
+})
+
+productsEl.addEventListener('click', ({ target }) => {
+    if (!target.closest('.products-item-cart-btn')) {
+        return;
+    }
+
+    const productEl = target.closest('.products-item');
+    const productObject = productList.productsObject.get(+productEl.dataset.id);
+
+    cart.addToCart(productObject);
+})
+
+document.querySelector('.menu-cart-form').addEventListener('click',
+    ({ target }) => {
+        if (!target.closest('.menu-cart-form-close-btn')) {
+            return;
+        }
+
+        const productEl = target.closest('.menu-cart-form-product');
+        const productObject = productList.productsObject.get(+productEl.dataset.id);
+
+        cart.removeToCart(productObject);
+    })
