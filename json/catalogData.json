@@ -4,6 +4,7 @@
         "title": "Notebook",
         "price": 2000,
         "img": "img/Notebook.jpg",
+        "product_name": "Notebook",
         "description": "Notebook"
     },
     {
@@ -11,6 +12,7 @@
         "title": "Mouse",
         "price": 20,
         "img": "img/Mouse.jpg",
+        "product_name": "Mouse",
         "description": "Mouse"
     },
     {
@@ -18,6 +20,7 @@
         "title": "Keyboard",
         "price": 200,
         "img": "img/Keyboard.jpg",
+        "product_name": "Keyboard",
         "description": "Keyboard"
     },
     {
@@ -25,6 +28,7 @@
         "title": "Gamepad",
         "price": 50,
         "img": "img/Gamepad.jpg",
+        "product_name": "Gamepad",
         "description": "Gamepad"
     }
 ]
