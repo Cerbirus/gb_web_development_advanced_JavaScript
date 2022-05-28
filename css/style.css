@@ -169,3 +169,16 @@ img {
     border: none;
     border-bottom: 2px solid #fafafa;
 }
+
+.myError{
+    display: block;
+    max-width: 600px;
+    width: 100%;
+    padding: 0 10px 10px 10px;
+    background-color: rgb(255, 84, 36);
+    border-radius: 5px;
+    font-size: 1em;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
