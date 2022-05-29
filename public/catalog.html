@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson_7: catalog</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- External Scripts -->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- Scripts -->
+    <script defer src="js/comp_header.js"></script>
+    <script defer src="js/comp_catalog_products.js"></script>
+    <script defer src="js/comp_features.js"></script>
+    <script defer src="js/comp_subscribe.js"></script>
+    <script defer src="js/comp_footer.js"></script>
+    <script defer src="js/comp_error.js"></script>
+    <script defer src="js/main.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+
+        <comp_header></comp_header>
+
+        <main>
+
+            <comp_catalog_products></comp_catalog_products>
+
+        </main>
+
+        <comp_features></comp_features>
+        <comp_subscribe></comp_subscribe>
+        <comp_footer></comp_footer>
+        <comp_error></comp_error>
+
+    </div>
+    <!--  <script>
+
+        class cart {
+
+            products = new Map();
+            count = 0;
+            total = 0;
+
+            addToCart(id, name, price) {
+                if (this.products.has(id))
+                    this.products.get(id).count++;
+                else {
+                    cartBodyEl.insertAdjacentHTML('beforeend',
+                        `<div id="product_${id}" class="menu-cart-form-product">
+                            <div>${name}</div >
+                            <div class="cart-count">${1}</div>
+                            <div>${price}</div>
+                            <div class="cart-total">${price}</div>
+                        </div>`);
+
+                    this.products.set(id, {
+                        name: name,
+                        price: price,
+                        count: 1,
+                        elem: cartBodyEl.querySelector(`#product_${id}`)
+                    });
+                }
+
+                const activProduct = this.products.get(id);
+                this.count++;
+                this.total += activProduct.price;
+
+                cartCountEl.textContent = this.count;
+                cartTotalEl.textContent = this.total;
+
+                activProduct.elem.querySelector(`.cart-count`)
+                    .textContent = activProduct.count;
+
+                activProduct.elem.querySelector(`.cart-total`)
+                    .textContent = activProduct.price * activProduct.count;
+
+            }
+        }
+
+        const productsEl = document.querySelector('.products-listing');
+        const cartEl = document.querySelector('.menu-cart');
+        const cartFormEl = document.querySelector('.menu-cart-form');
+        const cartCountEl = document.querySelector('.menu-cart-txt');
+        const cartBodyEl = document.querySelector('.menu-cart-form-body');
+        const cartTotalEl = document.querySelector('.menu-cart-form-total');
+        const cartObj = new cart();
+
+        cartEl.addEventListener('click', () => {
+            cartFormEl.classList.toggle('visibility-hidden');
+        })
+
+        // не понял как поймать кнопку и все ее элементы более проще
+        // пришлось все содержимое проверять        
+        productsEl.addEventListener('click', ({ target }) => {
+            if (!target.closest('.products-item-cart-btn')
+                /* && !target.offsetParent?.
+                    classList.contains('products-item-cart-btn')
+                && !target.parentElement?.
+                    classList.contains('products-item-cart-btn')
+                && !target.parentElement?.parentElement?.
+                    classList.contains('products-item-cart-btn') */
+            ) {
+                return;
+            }
+
+            const productEl = target.closest('.products-item');
+            cartObj.addToCart(
+                +productEl.dataset.id,
+                productEl.dataset.name,
+                +productEl.dataset.price);
+
+            /* if (target.classList.contains('products-item-cart-btn'))
+                cartObj.addToCart(
+                    target.offsetParent.dataset.id,
+                    target.offsetParent.dataset.name,
+                    target.offsetParent.dataset.price);
+
+            else if (target.offsetParent?.
+                classList.contains('products-item-cart-btn'))
+                cartObj.addToCart(
+                    target.offsetParent.offsetParent.dataset.id,
+                    target.offsetParent.offsetParent.dataset.name,
+                    target.offsetParent.offsetParent.dataset.price);
+            else if (target.parentElement?.
+                classList.contains('products-item-cart-btn'))
+                cartObj.addToCart(
+                    target.parentElement.offsetParent.dataset.id,
+                    target.parentElement.offsetParent.dataset.name,
+                    target.parentElement.offsetParent.dataset.price);
+            else
+                cartObj.addToCart(
+                    target.parentElement.parentElement.offsetParent.
+                        dataset.id,
+                    target.parentElement.parentElement.offsetParent.
+                        dataset.name,
+                    target.parentElement.parentElement.offsetParent.
+                        dataset.price); */
+        })
+
+    </script> -->
+
+</body>
+
+</html>

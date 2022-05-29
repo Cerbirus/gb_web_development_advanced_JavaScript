@@ -1,0 +1,68 @@
+$brend_color: #f16d7f;
+$brend_color2: #6f6e6e;
+
+.products-pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    &-list {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+
+        border: 1px solid #ebebeb;
+        border-radius: 5px;
+        list-style-type: none;
+
+        &-item {
+            padding: 12px 10px 12px 10px;
+            & svg {
+                fill: black;
+            }
+
+            & a {
+                text-decoration: none;
+            }
+
+            &-ellipsis {
+                padding: 0px;
+            }
+
+            &-txt {
+                color: #c4c4c4;
+            }
+        }
+
+        &-item:first-child {
+            padding: 13px 8px 11px 15px;
+        }
+        &-item:last-child {
+            padding: 13px 15px 11px 8px;
+        }
+
+        &-item:hover {
+            color: $brend_color;
+            & svg {
+                fill: $brend_color;
+            }
+            & a {
+                color: $brend_color;
+            }
+        }
+
+        &-item:active {
+            color: green;
+            & svg {
+                fill: $brend_color;
+            }
+
+            & .products-pagination-list-item-txt {
+                color: green;
+            }
+        }
+    }
+}

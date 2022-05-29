@@ -1,0 +1,39 @@
+.product-presentation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+}
+
+.product-presentation-btn {
+  width: auto;
+}
+
+.product-presentation-btn-icon {
+  background: rgba(42, 42, 42, 0.15);
+  width: 47px;
+  height: 47px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.product-presentation-btn-icon svg {
+  width: 50%;
+  height: 50%;
+}
+
+.product-presentation-btn-icon:hover svg {
+  fill: #f16d7f;
+}
+
+.product-presentation-btn-icon:active svg {
+  fill: #fff;
+}
+/*# sourceMappingURL=carusel.css.map */
