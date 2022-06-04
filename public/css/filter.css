@@ -1,0 +1,205 @@
+@charset "UTF-8";
+/* Предопределенные стили сайта */
+/* Затемнение блоков категорий */
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.products-header-inlineflex {
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  /* justify-content: space-between; */
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.products-header-filter {
+  position: absolute;
+  z-index: 50;
+  /* margin-right: auto; */
+  left: 0px;
+}
+
+.products-header-filter input[type="checkbox"] {
+  display: none;
+}
+
+.products-header-filter form {
+  display: block;
+  max-width: 395px;
+  width: 100%;
+  z-index: 50;
+  /* не получается поднять над другими элементами */
+  float: right;
+  background-color: transparent;
+}
+
+.filter {
+  display: none;
+  width: 80px;
+  height: 40px;
+}
+
+.filter ~ label {
+  width: 70px;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filter ~ label span {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.filter ~ label svg {
+  fill: black;
+}
+
+.filter:hover {
+  background-color: #f16d7f;
+}
+
+.filter:active {
+  background-color: #fff;
+}
+
+.filter:checked ~ .filter-list {
+  display: block;
+  visibility: visible;
+}
+
+.filter:checked ~ label {
+  z-index: 50;
+}
+
+.filter:checked ~ label span {
+  color: #f16d7f;
+}
+
+.filter:checked ~ label svg {
+  fill: #f16d7f;
+}
+
+.filter-list {
+  display: none;
+  visibility: hidden;
+  list-style: none;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  max-width: 360px;
+  width: 100%;
+  margin-left: 8px;
+  padding: 50px 20px 20px 20px;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  z-index: -1;
+  background: #ffffff;
+  -webkit-box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+          box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+}
+
+.filter-item {
+  display: block;
+  margin-top: 18px;
+  height: 100%;
+  list-style: none;
+}
+
+.filter-item-input {
+  display: none;
+}
+
+.filter-item label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-transform: uppercase;
+  width: 100%;
+  height: 37px;
+  border-bottom: 1px solid #ebebeb;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filter-item label span {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  padding-left: 16px;
+}
+
+.filter-item label::before {
+  content: "";
+  display: block;
+  background: #f16d7f;
+  height: 37px;
+  width: 5px;
+  position: absolute;
+}
+
+.filter-item input:checked ~ ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  visibility: visible;
+  width: 100%;
+  height: 100%;
+}
+
+.filter-item input:checked ~ label span {
+  color: #f16d7f;
+}
+
+.filter-sublist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: none;
+  visibility: hidden;
+  height: 0px;
+  margin-top: 24px;
+  list-style: none;
+}
+
+.filter-subitem {
+  display: block;
+  color: #6f6e6e;
+  margin: 0px 0px 11px 12px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+/*# sourceMappingURL=filter.css.map */
