@@ -1,0 +1,35 @@
+$brend_color: #f16d7f;
+$brend_color2: #6f6e6e;
+
+.product-presentation {
+    display: flex;
+    justify-content: center;
+    border: none;
+
+    &-btn {
+        width: auto;
+        &-icon {
+            background: rgba(42, 42, 42, 0.15);
+            width: 47px;
+            height: 47px;
+            display: flex;
+            align-items: center;
+            & svg {
+                width: 50%;
+                height: 50%;
+            }
+
+            &:hover {
+                & svg {
+                    fill: $brend_color;
+                }
+            }
+
+            &:active {
+                & svg {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+}

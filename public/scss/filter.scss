@@ -1,0 +1,187 @@
+/* Предопределенные стили сайта */
+$opacity: 0.7; /* Затемнение блоков категорий */
+$brend_color: #f16d7f;
+$brend_color2: #6f6e6e;
+
+@font-face {
+    font-family: "Lato";
+    src: url("../fonts/Lato/Lato-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.products-header-inlineflex {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    justify-content: center;
+    position: relative;
+}
+
+.products-header-filter {
+    position: absolute;
+    z-index: 50;
+    /* margin-right: auto; */
+    left: 0px;
+
+    & input[type="checkbox"] {
+        display: none;
+    }
+
+    & form {
+        display: block;
+        max-width: 395px;
+        width: 100%;
+        z-index: 50; /* не получается поднять над другими элементами */
+        float: right;
+        background-color: transparent;
+    }
+}
+
+.filter {
+    display: none;
+    width: 80px;
+    height: 40px;
+    ~ label {
+        width: 70px;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+            font-family: Lato;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 17px;
+        }
+
+        svg {
+            fill: black;
+        }
+    }
+
+    &:hover {
+        background-color: $brend_color;
+    }
+
+    &:active {
+        background-color: #fff;
+    }
+
+    &:checked {
+        ~ .filter-list {
+            display: block;
+            visibility: visible;
+        }
+
+        ~ label {
+            z-index: 50;
+
+            span {
+                color: $brend_color;
+            }
+            svg {
+                fill: $brend_color;
+            }
+        }
+    }
+
+    &-list {
+        display: none;
+        visibility: hidden;
+        list-style: none;
+
+        min-width: max-content;
+        max-width: 360px;
+        width: 100%;
+        margin-left: 8px;
+        padding: 50px 20px 20px 20px;
+
+        position: absolute;
+        top: -20px;
+        left: -20px;
+
+        z-index: -1;
+
+        background: #ffffff;
+        box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+    }
+
+    &-item {
+        display: block;
+        margin-top: 18px;
+        height: 100%;
+        list-style: none;
+
+        &-input {
+            display: none;
+        }
+
+        label {
+            display: flex;
+            text-transform: uppercase;
+            width: 100%;
+            height: 37px;
+            border-bottom: 1px solid #ebebeb;
+            align-items: center;
+
+            span {
+                font-family: Lato;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 17px;
+
+                padding-left: 16px;
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                background: $brend_color;
+                height: 37px;
+                width: 5px;
+                position: absolute;
+            }
+        }
+
+        & input:checked {
+            ~ ul {
+                display: flex;
+                visibility: visible;
+                width: 100%;
+                height: 100%;
+            }
+
+            ~ label {
+                span {
+                    color: $brend_color;
+                }
+            }
+        }
+    }
+
+    &-sublist {
+        display: flex;
+        flex-direction: column;
+        display: none;
+        visibility: hidden;
+        height: 0px;
+        margin-top: 24px;
+        list-style: none;
+    }
+
+    &-subitem {
+        display: block;
+        color: $brend_color2;
+        margin: 0px 0px 11px 12px;
+
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

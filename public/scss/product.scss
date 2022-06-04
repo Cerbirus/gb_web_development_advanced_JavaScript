@@ -1,0 +1,135 @@
+$brend_color: #f16d7f;
+$brend_color2: #6f6e6e;
+
+.product {
+    margin-bottom: 15px;
+    position: relative;
+
+    &-presentation {
+        height: 777px;
+        background-color: #f7f7f7;
+        border: 1px solid #eaeaea;
+    }
+
+    &-description {
+        height: 600px;
+        background-color: #fff;
+        position: relative;
+        top: -65px;
+        border: 1px solid #eaeaea;
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-content: center;
+            align-items: center;
+
+            &-header {
+                display: block;
+
+                font-family: Lato;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 17px;
+                margin-top: 65px;
+            }
+            &-header::after {
+                content: "";
+                display: block;
+                width: 63px;
+                height: 3px;
+                background-color: $brend_color;
+                margin: auto;
+                margin-top: 12px;
+                margin-bottom: 12px;
+            }
+            &-subheader {
+                display: block;
+
+                font-family: Lato;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 18px;
+                line-height: 22px;
+
+                color: #4d4d4d;
+            }
+            &-txt {
+                display: block;
+                max-width: 565px;
+                width: 100%;
+                margin-top: 48px;
+                text-align: center;
+
+                font-family: Lato;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 17px;
+                text-align: center;
+
+                color: #5e5e5e;
+            }
+
+            &-price {
+                max-width: 640px;
+                width: 100%;
+
+                margin-top: 32px;
+                padding-bottom: 64px;
+                margin-bottom: 64px;
+                border-bottom: 1px solid #eaeaea;
+
+                text-align: center;
+
+                font-family: Lato;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 24px;
+                line-height: 29px;
+            }
+
+            &-sorting {
+                max-width: 640px;
+                width: 100%;
+
+                &-listing {
+                    justify-content: center;
+                }
+            }
+
+            &-cartbtn {
+                display: block;
+                position: static;
+                margin-top: 48px;
+
+                border-color: $brend_color;
+                color: $brend_color;
+
+                & svg {
+                    fill: $brend_color;
+                }
+
+                & span {
+                    /* vertical-align: super; */
+
+                    font-family: Lato;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+
+                &:hover {
+                    background-color: #f7f7f7;
+                }
+
+                &:active {
+                    background-color: #fff;
+                }
+            }
+        }
+    }
+}
