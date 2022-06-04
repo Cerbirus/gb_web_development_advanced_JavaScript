@@ -1771,7 +1771,7 @@ ul {
 
   &-header {
     display: grid;
-    grid-template-columns: 50% 20% 15% 15%;
+    grid-template-columns: 45% 20% 15% 15% 5%;
 
     border-bottom: 1px solid black;
   }
@@ -1793,7 +1793,7 @@ ul {
 
   &-product {
     display: grid;
-    grid-template-columns: 50% 20% 15% 15%;
+    grid-template-columns: 45% 20% 15% 15% 5%;
     align-items: center;
     border-bottom: 1px dotted black;
   }

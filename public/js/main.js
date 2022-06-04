@@ -26,28 +26,40 @@ const app = new Vue({
 
         },
         postJson(url, data) {
+            this.errorText = '';
+            this.error = false;
             return fetch(url, {
-                method: 'POST',
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data)
             })
                 .then(result => result.json())
-                .catch(error => this.$refs.comp_error.setText(error))
+                .catch(error => {
+                    this.errorText = error;
+                    this.error = true;
+                })
         },
         putJson(url, data) {
+            this.errorText = '';
+            this.error = false;
             return fetch(url, {
-                method: 'PUT',
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data)
             })
                 .then(result => result.json())
-                .catch(error => this.$refs.comp_error.setText(error))
+                .catch(error => {
+                    this.errorText = error;
+                    this.error = true;
+                })
         },
         delJson(url, data) {
+            this.errorText = '';
+            this.error = false;
             return fetch(url, {
                 method: 'DELETE',
                 headers: {
@@ -56,7 +68,10 @@ const app = new Vue({
                 body: JSON.stringify(data)
             })
                 .then(result => result.json())
-                .catch(error => this.$refs.comp_error.setText(error))
+                .catch(error => {
+                    this.errorText = error;
+                    this.error = true;
+                })
         },
     },
 
