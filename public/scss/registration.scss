@@ -1,0 +1,177 @@
+$border-width: 0px;
+$border-width2: 0px;
+$border-color: #6df174;
+$border-color2: #f16de6;
+$border: $border-width solid $border-color;
+$border2: $border-width2 solid $border-color2;
+
+/* Предопределенные стили сайта */
+$opacity: 0.7; /* Затемнение блоков категорий */
+$brend_color: #f16d7f;
+$brend_color2: #6f6e6e;
+
+.registration {
+    display: flex;
+    margin-top: 64px;
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+        max-width: 360px;
+        width: 100%;
+        margin-right: 128px;
+
+        &-name {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 33px;
+        }
+
+        &-login {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 39px;
+        }
+
+        &-loyalty {
+            display: flex;
+            flex-direction: column;
+
+            font-family: Lato;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 24px;
+            line-height: 29px;
+
+            &-header {
+                font-family: Lato;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 24px;
+                line-height: 29px;
+            }
+
+            & h2,
+            span {
+                margin-bottom: 22px;
+            }
+        }
+
+        &-header {
+            margin-bottom: 20px;
+
+            font-family: Lato;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 19px;
+
+            color: #222222;
+        }
+
+        &-input {
+            margin-bottom: 20px;
+            height: 45px;
+            padding-left: 17px;
+            border: 1px solid #a4a4a4;
+
+            font-family: Lato;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 16px;
+
+            &::placeholder {
+                color: #b1b1b1;
+            }
+        }
+
+        &-annotation {
+            font-family: Lato;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 16px;
+
+            color: #b1b1b1;
+        }
+
+        &-list {
+            list-style-type: none;
+            &-item {
+                display: flex;
+                align-items: center;
+                margin: 0 0 16px 0;
+                &::before {
+                    content: "";
+                    display: block;
+                    width: 20px;
+                    height: 16px;
+                    background-image: url("../img/Vector.svg");
+                    margin-right: 22px;
+                }
+            }
+        }
+        &-radiobtn {
+            margin: 11px 0 0 0;
+
+            font-family: Lato;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 11px;
+            line-height: 13px;
+        }
+
+        &-btn {
+            max-width: 167px;
+            width: 100%;
+            border: 0px;
+            background: $brend_color;
+            padding: 16px 30px;
+            display: flex;
+            align-items: center;
+
+            font-family: Lato;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 17px;
+            /* identical to box height */
+
+            color: #ffffff;
+            position: relative;
+        }
+    }
+}
+
+.vector {
+    position: relative;
+    margin-left: 20px;
+
+    &::before {
+        content: "";
+        display: block;
+        height: 0px;
+        width: 16.29px;
+        border-top: 1.5px solid #fff;
+        background-color: transparent;
+        position: absolute;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        border-top: 1.5px solid #fff;
+        border-right: 1.5px solid #fff;
+        width: 8px;
+        height: 8px;
+        background-color: transparent;
+        transform: rotate(45deg);
+        position: absolute;
+        top: -4px;
+        left: 6px;
+        border-radius: 1px;
+    }
+}

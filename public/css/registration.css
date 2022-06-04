@@ -1,0 +1,207 @@
+@charset "UTF-8";
+/* Предопределенные стили сайта */
+/* Затемнение блоков категорий */
+.registration {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 64px;
+}
+
+.registration-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 360px;
+  width: 100%;
+  margin-right: 128px;
+}
+
+.registration-form-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  margin-bottom: 33px;
+}
+
+.registration-form-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  margin-bottom: 39px;
+}
+
+.registration-form-loyalty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.registration-form-loyalty-header {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.registration-form-loyalty h2,
+.registration-form-loyalty span {
+  margin-bottom: 22px;
+}
+
+.registration-form-header {
+  margin-bottom: 20px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  color: #222222;
+}
+
+.registration-form-input {
+  margin-bottom: 20px;
+  height: 45px;
+  padding-left: 17px;
+  border: 1px solid #a4a4a4;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.registration-form-input::-webkit-input-placeholder {
+  color: #b1b1b1;
+}
+
+.registration-form-input:-ms-input-placeholder {
+  color: #b1b1b1;
+}
+
+.registration-form-input::-ms-input-placeholder {
+  color: #b1b1b1;
+}
+
+.registration-form-input::placeholder {
+  color: #b1b1b1;
+}
+
+.registration-form-annotation {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 16px;
+  color: #b1b1b1;
+}
+
+.registration-form-list {
+  list-style-type: none;
+}
+
+.registration-form-list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 16px 0;
+}
+
+.registration-form-list-item::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 16px;
+  background-image: url("../img/Vector.svg");
+  margin-right: 22px;
+}
+
+.registration-form-radiobtn {
+  margin: 11px 0 0 0;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.registration-form-btn {
+  max-width: 167px;
+  width: 100%;
+  border: 0px;
+  background: #f16d7f;
+  padding: 16px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  color: #ffffff;
+  position: relative;
+}
+
+.vector {
+  position: relative;
+  margin-left: 20px;
+}
+
+.vector::before {
+  content: "";
+  display: block;
+  height: 0px;
+  width: 16.29px;
+  border-top: 1.5px solid #fff;
+  background-color: transparent;
+  position: absolute;
+}
+
+.vector::after {
+  content: "";
+  display: block;
+  border-top: 1.5px solid #fff;
+  border-right: 1.5px solid #fff;
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  position: absolute;
+  top: -4px;
+  left: 6px;
+  border-radius: 1px;
+}
+/*# sourceMappingURL=registration.css.map */
